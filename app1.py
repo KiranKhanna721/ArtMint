@@ -1,6 +1,7 @@
 import streamlit as st     
 import requests
 from PIL import Image
+import config
 
 
 def app():
@@ -47,7 +48,7 @@ def app():
             }
             headers = {
                 "accept": "application/json",
-                "X-API-Key": "sk_live_69db9c79-e3c0-4467-a77b-8c143e304c9c"
+                "X-API-Key": config.api_key
             }
             response = requests.post(url, data=payload, files=files, headers=headers)
             st.write(response.text)
