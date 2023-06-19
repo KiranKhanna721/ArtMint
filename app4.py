@@ -1,7 +1,8 @@
 import openai
 import streamlit as st    
-import os
-import config
+import requests
+from io import BytesIO
+
 
 
 def generate_nft_artwork(description):
@@ -16,8 +17,14 @@ def generate_nft_artwork(description):
 
 def app():
     st.header("NFT Art Generation with DALL·E")
-    openai.api_key = config.OPENAI_API_KEY 
+    openai.api_key =  st.secrets["OPENAI_API_KEY"]
     description = st.text_input("Description for a image you want to generate")
-    artwork = generate_nft_artwork(description)
-    st.write(artwork)
-    st.image(artwork)
+    image_url = generate_nft_artwork(description)
+    st.image(image_url)
+    if image_url:
+        response = requests.get(image_url)
+        if response.status_code == 200:
+            image = Image.open(BytesIO(response.content))
+            st.image(image, caption="Downloaded Image")
+        else:
+            st.write("Error: Invalid image URL")
