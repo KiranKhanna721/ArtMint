@@ -17,7 +17,7 @@ def app():
             url = "https://api.verbwire.com/v1/nft/data/owned?walletAddress="+walletAddress+"&chain=ethereum"
             headers = {
                 "accept": "application/json",
-                "X-API-Key": "sk_live_69db9c79-e3c0-4467-a77b-8c143e304c9c"
+                "X-API-Key": st.secrets["api_key"]
             }
             response = requests.get(url, headers=headers)
             st.write("Get all NFTs owned by a wallet address")
