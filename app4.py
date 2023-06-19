@@ -10,7 +10,7 @@ def generate_nft_artwork(description):
     response = openai.Image.create(
         prompt=prompt,
         n=1,
-        size="256X256"
+        size="256x256"
     )
     image_url = response['data'][0]['url']
     return image_url
