@@ -1,6 +1,7 @@
 import openai
 import streamlit as st    
 import os
+import config
 
 
 def generate_nft_artwork(description):
@@ -15,7 +16,7 @@ def generate_nft_artwork(description):
 
 def app():
     st.header("NFT Art Generation with DALL·E")
-    openai.api_key = os.getenv("OPENAI_API_KEY")
+    openai.api_key = config.OPENAI_API_KEY 
     description = st.text_input("Description for a image you want to generate")
     artwork = generate_nft_artwork(description)
     st.write(artwork)
