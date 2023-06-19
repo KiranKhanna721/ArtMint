@@ -54,8 +54,8 @@ def main():
             if result:
                 st.success("Logged In as {}".format(username))
                 PAGES = {
-		    "NFT Art Generation with DALL·E" :app4,
                     "NFT mint from Image in OpenSea": app1,
+		     "NFT Art Generation with DALL·E" :app4,
                     "Understanding holdings of a particular wallet of NFT on Opensea":app2,
                     "NFT collection has been indexed on this platform":app3
                     }
